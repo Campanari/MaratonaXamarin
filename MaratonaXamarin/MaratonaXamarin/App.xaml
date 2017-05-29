@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MaratonaXamarin.App">
+    <Application.Resources>
+        
+        <ResourceDictionary>
+            
+            <Color x:Key="FacebookBlue">#3b5998</Color>
+            <Color x:Key="FacebookMediumBlue">#6d84b4</Color>
+            <Color x:Key="FacebookLighterBlue">#afbdd4</Color>
+            <Color x:Key="FacebookLightestBlue">#d8dfea</Color>
+
+            <Style x:Key="facebookButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Blue8" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            
+        </ResourceDictionary>
+
+	</Application.Resources>
+</Application>
