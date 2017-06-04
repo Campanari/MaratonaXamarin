@@ -1,7 +1,6 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿using Android.App;
+using System.Reflection;
 using System.Runtime.InteropServices;
-using Android.App;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -30,8 +29,3 @@ using Android.App;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: UsesPermission(Android.Manifest.Permission.Internet)]
-//[assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-//[assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-//[assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
-//[assembly: UsesPermission(Name = Android.Manifest.Permission.WakeLock)]
-//[assembly: UsesPermission(Name = Android.Manifest.Permission.GetAccounts)]

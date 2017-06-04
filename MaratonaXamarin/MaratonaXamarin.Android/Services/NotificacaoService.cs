@@ -9,14 +9,9 @@ namespace MaratonaXamarin.Android.Services
     public class NotificacaoService : INotificacaoService
     {
         public async Task Registrar(string token) =>
-            await Task.Factory.StartNew(() =>
-            {
-                //GcmClient.CheckDevice(Forms.Context);
-                //GcmClient.CheckManifest(Forms.Context);
+            await Task.Factory.StartNew(() => { });
 
-                //GcmClient.Register(Forms.Context, GcmBroadcastReceiver.SENDER_IDS);
-            });
-
-        public async Task Desregistrar() => await Task.Factory.StartNew(() => { } );//GcmClient.UnRegister(Forms.Context));
+        public async Task Desregistrar() =>
+            await Task.Factory.StartNew(() => { });
     }
 }
