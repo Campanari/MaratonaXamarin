@@ -1,6 +1,9 @@
-﻿using MaratonaXamarin.ViewModels;
+﻿using MaratonaXamarin.Services;
+using MaratonaXamarin.ViewModels;
 using MaratonaXamarin.Views;
+using Microsoft.WindowsAzure.MobileServices;
 using MVVMonkey.Core.Services;
+using MVVMonkey.Core.ViewModel;
 using Xamarin.Forms;
 
 namespace MaratonaXamarin
@@ -9,7 +12,13 @@ namespace MaratonaXamarin
     {
         public App()
         {
+            InitializeMessages();
             this.Configure(InitializeNavigation);
+        }
+
+        private void InitializeMessages()
+        {
+            MessagingCenter.Subscribe<ViewModelBase, MobileServiceUser>(this, Mensagens.UsuarioAutenticado, OnUsuarioAutenticado);
         }
 
         private void InitializeNavigation(INavigationService navigationService)
@@ -18,6 +27,15 @@ namespace MaratonaXamarin
             navigationService.Configure<Principal, PrincipalViewModel>();
 
             navigationService.Start<LoginViewModel>(navigationPage: false);
+        }
+
+        public void OnUsuarioAutenticado(ViewModelBase viewModel, MobileServiceUser usuario)
+        {
+            DependencyService.Get<INotificacaoService>()
+                .Registrar(usuario.MobileServiceAuthenticationToken);
+
+            DependencyService.Get<INavigationService>()
+                .Start<PrincipalViewModel>(new NavigationParameters(nameof(PrincipalViewModel.Parametros.Usuario), usuario));
         }
     }
 }

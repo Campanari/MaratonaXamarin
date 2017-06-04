@@ -1,29 +1,21 @@
-﻿using System;
-using MaratonaXamarin.Services;
-using Microsoft.WindowsAzure.MobileServices;
+﻿using Microsoft.WindowsAzure.MobileServices;
 using MVVMonkey.Core.Services;
 using MVVMonkey.Core.ViewModel;
-using Xamarin.Forms;
 
 namespace MaratonaXamarin.ViewModels
 {
     class PrincipalViewModel : ViewModelBase, INavigationViewModel
     {
-        private INotificacaoService NotificacaoService = DependencyService.Get<INotificacaoService>();
-        public MobileServiceUser Usuario { get; private set; }
-        
-        ~PrincipalViewModel()
+        public static class Parametros
         {
-            if (Usuario != null)
-                NotificacaoService.Desregistrar();
+            public readonly static string Usuario = nameof(Usuario);
         }
 
+        private MobileServiceUser Usuario { get; set; }
+        
         public void OnNavigate(NavigationParameters navigationParameters)
         {
-            Usuario = navigationParameters.GetValue<MobileServiceUser>(nameof(Usuario));
-
-            if (Usuario != null)
-                NotificacaoService.Registrar(Usuario.MobileServiceAuthenticationToken);
+            Usuario = navigationParameters.GetValue<MobileServiceUser>(nameof(Parametros.Usuario));
         }
     }
 }
