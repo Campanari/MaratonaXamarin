@@ -5,26 +5,10 @@
              xmlns:pages="clr-namespace:MaratonaXamarin.Views;assembly=MaratonaXamarin"
              Title="Maratona Xamarin">
 
-    <!--Pages can be added as references or inline-->
-
-    <pages:Aba1/>
+    <pages:Perfil/>
     
-    <ContentPage Title="Tab 2">
-        
-        <StackLayout>
-            <Label Text="Green"  HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5" />
-            <BoxView Color="Green" VerticalOptions="FillAndExpand" />
-        </StackLayout>
-        
-    </ContentPage>
+    <pages:Tarefas/>
     
-    <ContentPage Title="Tab 3">
-        
-        <StackLayout>
-            <Label Text="Blue" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" Margin="5"  />
-            <BoxView Color="Blue" VerticalOptions="FillAndExpand" />
-        </StackLayout>
-        
-    </ContentPage>
+    <pages:Mapa/>
     
 </TabbedPage>
