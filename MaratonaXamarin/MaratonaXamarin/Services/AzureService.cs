@@ -9,12 +9,11 @@ namespace MaratonaXamarin.Services
         private const string Url = "https://campanari.azurewebsites.net";
 
         private static MobileServiceClient _cliente;
-        public static MobileServiceClient Cliente => 
-            _cliente == null
-                ? _cliente = new MobileServiceClient(Url)
-                : _cliente;
+        public static MobileServiceClient Cliente =>
+            _cliente ?? (_cliente = new MobileServiceClient(Url))
+;
 
-        public async static Task<MobileServiceUser> LoginAsync()
+        public static async Task<MobileServiceUser> LoginAsync()
         {
             var autenticacaoService = DependencyService.Get<IAutenticaoService>();
             var usuario = await autenticacaoService.Autenticar(Cliente, MobileServiceAuthenticationProvider.Facebook);

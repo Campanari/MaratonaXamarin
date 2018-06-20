@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace MaratonaXamarin.ViewModels
 {
-    class LoginViewModel : ViewModelBase
+    internal class LoginViewModel : ViewModelBase
     {
         public LoginViewModel()
         {
@@ -35,6 +35,8 @@ namespace MaratonaXamarin.ViewModels
 
         public void OnErroAoAutenticarUsuario(ViewModelBase sender, Exception execption)
         {
+            Microsoft.AppCenter.Crashes.Crashes.TrackError(execption);
+
             DisplayAlertService.DisplayAlertAsync("Facebook Login", execption.Message, new DisplayAlertAction("OK"));
         }
     }

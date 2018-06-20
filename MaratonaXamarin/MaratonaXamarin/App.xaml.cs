@@ -1,6 +1,9 @@
 ﻿using MaratonaXamarin.Services;
 using MaratonaXamarin.ViewModels;
 using MaratonaXamarin.Views;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.WindowsAzure.MobileServices;
 using MVVMonkey.Core.Services;
 using MVVMonkey.Core.ViewModel;
@@ -36,6 +39,13 @@ namespace MaratonaXamarin
 
             DependencyService.Get<INavigationService>()
                 .Start<PrincipalViewModel>(new NavigationParameters(nameof(PrincipalViewModel.Parametros.Usuario), usuario));
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            AppCenter.Start("android=fe002865-c861-4e56-b25b-f257295e54ec;", typeof(Analytics), typeof(Crashes));
         }
     }
 }
